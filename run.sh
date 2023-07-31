@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/dfbash -x
 asfajlk
 git config --global user.email "zuhhaga@gmail.com"
 git config --global user.name "zuhhaga"
