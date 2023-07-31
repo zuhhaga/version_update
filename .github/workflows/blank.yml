@@ -37,7 +37,8 @@ jobs:
           bash -x ./run.sh
           
           
-      - name: Save
+      - if: always()
+        name: Save
         uses: burgerzuhsaga/apt_cache/save@main
         with: 
             key: ubuntu-cache
