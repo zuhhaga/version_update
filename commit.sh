@@ -5,5 +5,6 @@ git add commit.sh
 git add blank.yml
 git add `readlink blank.yml`
 git add docs/README.md
+git add docs/index.html
 git commit -m update
 git push
