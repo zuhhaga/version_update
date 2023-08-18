@@ -1,33 +1,22 @@
 #!/bin/python3
 import koji
+from os.path import join
 session = koji.ClientSession("https://koji.fedoraproject.org/kojihub")
-print('koji session initialized')
+output=open('docs/_redirects', 'a', -1, 'utf-8')
 
-def getinfo(packageName, pattern='*', compl=0):
-    l=session.listBuilds(
-        session.getPackageID(packageName), 
-        completeAfter=compl, 
-        pattern=pattern, 
-        state=1)
-    if (len(l)):
-        l = l[-1]
-        return l
-    else:
-        return None
+def setsrc(name, tag):
+    info = session.listTagged(tag, latest=True, package=name)[0]
+    name = info['name']
+    version = info['version']
+    release = info['release']
+    domain='https://kojipkgs.fedoraproject.org/packages/'
+    path=join(domain, name, version, release, 'src', 
+        '.'.join((
+        '-'.join((name, version, release)), 'src', 'rpm'))
+    )
+    redirect = join('/fedora', tag, 'src', '.'.join((name, 'rpm')))
+    print(redirect, path, file=output)
 
-def getinfotime(packageName, filename, pattern='*'):
-    try:
-        fx = open(filename, 'r', -1, 'utf-8')
-        compl = fx.read()
-        fx.close()
-        compl = float(compl)
-    except Exception:
-        compl = 0.0
-    info = getinfo(packageName, pattern, compl)
-    
-    fx = open(filename, 'w', -1, 'utf-8')
-    fx.write(str(info['completion_ts']))
-    fx.close()
-    return info
+setsrc('grub2', 'f38')
 
-print(getinfotime('grub2', 'completion_ts/grub2.txt', '*.fc38'))
+output.close()
