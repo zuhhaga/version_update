@@ -1,5 +1,6 @@
 #!/bin/dfbash -x
-pip install pyp2rpm
+pip install koji
+
 git config --global user.email "zuhhaga@gmail.com"
 git config --global user.name "zuhhaga"
 git commit -m update
