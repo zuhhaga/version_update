@@ -18,5 +18,6 @@ def setsrc(name, tag):
     print(redirect, path, file=output)
 
 setsrc('grub2', 'f38')
+setsrc('dolphin', 'f38')
 
 output.close()
