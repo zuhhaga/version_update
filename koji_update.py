@@ -17,7 +17,8 @@ def setsrc(name, tag):
     redirect = join('/fedora', tag, 'src', '.'.join((name, 'src', 'rpm')))
     print(redirect, path, file=output)
 
-setsrc('grub2', 'f39')
-setsrc('dolphin', 'f39')
-
+for i in range(37, 40):
+    i = 'f'+str(i)
+    for u in ('grub2', 'dolphin'):
+        setsrc(u, i)
 output.close()
