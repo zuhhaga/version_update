@@ -5,7 +5,9 @@ session = koji.ClientSession("https://koji.fedoraproject.org/kojihub")
 output=open('docs/_redirects', 'a', -1, 'utf-8')
 
 def setsrc(name, tag):
-    info = session.listTagged(tag, latest=True, package=name)[0]
+    infolist = session.listTagged(tag, latest=True, package=name)
+    if len(infolist) == 0: return
+    info = infolist[0]
     name = info['name']
     version = info['version']
     release = info['release']
@@ -17,14 +19,15 @@ def setsrc(name, tag):
     redirect = join('/fedora', tag, 'src', '.'.join((name, 'src', 'rpm')))
     print(redirect, path, file=output)
 
-tags = list(map(lambda d: 'f' + d, range(37, 40)))
+tags = list(map(lambda d: 'f' + str(d), range(37, 40)))
 pkgs = [
-    'grub2', 
-    'dolphin', 
+    'grub2',
+    'dolphin',
     'python-gbinder'
 ]
 
 for i in tags:
     for u in pkgs:
         setsrc(u, i)
+
 output.close()
