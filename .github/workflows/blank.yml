@@ -32,8 +32,9 @@ jobs:
         uses: burgerzuhsaga/apt_cache/restore@main
         with: 
           key: ubuntu-cache
-          pkgs: libwww-curl-perl libjson-parse-perl libkrb5-dev
-
+          pkgs: libkrb5-dev
+          
+#libwww-curl-perl libjson-parse-perl 
             
       - uses: actions/setup-python@v4
         with:
