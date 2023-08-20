@@ -17,8 +17,14 @@ def setsrc(name, tag):
     redirect = join('/fedora', tag, 'src', '.'.join((name, 'src', 'rpm')))
     print(redirect, path, file=output)
 
-for i in range(37, 40):
-    i = 'f'+str(i)
-    for u in ('grub2', 'dolphin'):
+tags = list(map(lambda d: 'f' + d, range(37, 40)))
+pkgs = [
+    'grub2', 
+    'dolphin', 
+    'python-gbinder'
+]
+
+for i in tags:
+    for u in pkgs:
         setsrc(u, i)
 output.close()
