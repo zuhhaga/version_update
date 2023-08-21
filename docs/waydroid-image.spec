@@ -1,54 +1,18 @@
-use JSON::PP;
-use LWP::Simple;
-use experimental "try";
-
-my @txt = (
- 'https://ota.waydro.id/system/lineage/waydroid_x86_64/VANILLA.json',
- 'https://ota.waydro.id/vendor/waydroid_x86_64/MAINLINE.json',
- 'https://ota.waydro.id/system/lineage/waydroid_arm/VANILLA.json',
- 'https://ota.waydro.id/vendor/waydroid_arm/MAINLINE.json',
- 
- 'https://ota.waydro.id/system/lineage/waydroid_arm64/VANILLA.json',
- 'https://ota.waydro.id/vendor/waydroid_arm64/MAINLINE.json',
- 'https://ota.waydro.id/system/lineage/waydroid_x86/VANILLA.json',
- 'https://ota.waydro.id/vendor/waydroid_x86/MAINLINE.json'
-);
-
-open(my $fh, '>', 'docs/waydroid-image.spec');
-print $fh 'Name:           waydroid-image
+Name:           waydroid-image
 Release:        0
 Summary:        Waydroid is a container-based approach to boot a full Android
 License:        LGPL-3.0-only
 URL:            https://github.com/waydroid/waydroid
-';
+Source0: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-18.1-20230819-VANILLA-waydroid_x86_64-system.zip/download
+Source1: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/lineage-18.1-20230819-MAINLINE-waydroid_x86_64-vendor.zip/download
+Source2: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm/lineage-18.1-20230819-VANILLA-waydroid_arm-system.zip/download
+Source3: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm/lineage-18.1-20230819-MAINLINE-waydroid_arm-vendor.zip/download
+Source4: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm64/lineage-18.1-20230819-VANILLA-waydroid_arm64-system.zip/download
+Source5: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm64/lineage-18.1-20230819-MAINLINE-waydroid_arm64-vendor.zip/download
+Source6: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86/lineage-18.1-20230819-VANILLA-waydroid_x86-system.zip/download
+Source7: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86/lineage-18.1-20230819-MAINLINE-waydroid_x86-vendor.zip/download
+Version: 20230819
 
-my $ts = 0;
-my $id = 0;
-my @urls=();
-my @jsons=();
-
-for my $t (@txt) {
-    my $resp = get($t);
-    my $json = decode_json($resp);
-    push @jsons, $json;
-    my $url = $json->{'response'}[0]{'url'};
-    push @urls, $url;
-    my $temp = $json->{'response'}[0]{'datetime'} + 0;
-    if ($temp > $ts){
-        $ts = $temp;
-    }
-}
-
-for my $t (@urls){
-    print $fh "Source$id: $t\n";
-    $id++;
-}
-
-my $version =  'Version: ' . POSIX::strftime("%Y%m%d", localtime($ts));
-
-print $fh "$version\n";
-
-print $fh '
 %if %{undefined arm64}
 %define arm64 aarch64
 %endif
@@ -105,9 +69,4 @@ mv vendor.img %{buildroot}%{_datadir}/waydroid-extra/images
 %{_datadir}/waydroid-extra/images
 %{_datadir}/waydroid-extra/images/system.img
 %{_datadir}/waydroid-extra/images/vendor.img
-
-';
-
-
-close $fh;
 
