@@ -25,6 +25,7 @@ URL:            https://github.com/waydroid/waydroid
 my $ts = 0;
 my $id = 0;
 my @urls=();
+my @names=();
 my @jsons=();
 
 for my $t (@txt) {
@@ -33,6 +34,8 @@ for my $t (@txt) {
     push @jsons, $json;
     my $url = $json->{'response'}[0]{'url'};
     push @urls, $url;
+    my $name = $json->{'response'}[0]{'filename'};
+    push @names, $name;
     my $temp = $json->{'response'}[0]{'datetime'} + 0;
     if ($temp > $ts){
         $ts = $temp;
@@ -40,7 +43,8 @@ for my $t (@txt) {
 }
 
 for my $t (@urls){
-    print $fh "Source$id: $t\n";
+    my $n = $names[$id];
+    print $fh "Source$id: $t#/$n\n";
     $id++;
 }
 
