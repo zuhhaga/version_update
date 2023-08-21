@@ -31,6 +31,6 @@ close $fh;
 
 my $version = POSIX::strftime("%m%d%Y", $ts);
 
-open(my $fh, '>', 'waydroid_version');
+open(my $fh, '>', 'docs/waydroid_version');
 print $fh ($version);
 close $fh;
