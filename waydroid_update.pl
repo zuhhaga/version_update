@@ -35,7 +35,7 @@ while ($#json) {
 }
 
 close $fh;
-my $version = POSIX::strftime("%m%d%Y", localtime($ts));
+my $version =  'Version: ' . POSIX::strftime("%Y%m%d", localtime($ts));
 
 open(my $fh, '>', 'docs/waydroid_version');
 print $fh ($version);
