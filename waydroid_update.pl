@@ -20,3 +20,5 @@ while ($#json) {
     my $url = $json->{'response'}[0]{'url'};
     print $fh (pop @json, ' ', $url, "\n");
 }
+
+close $fh;
