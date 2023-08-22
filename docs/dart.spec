@@ -1,6 +1,6 @@
 Name: dart
 Version: 3.2.0
-%define ver %{version}-74.0.dev
+%define ver %{version}-90.0.dev
 Release:        1%{?dist}
 Summary:        Dart SDK
 License:        BSD
@@ -27,14 +27,13 @@ ExclusiveArch: %ix86 %arm64 %arm %x86_64 %riscv64 x86_64 riscv64
 
 %define dartpath %{_usr}/lib/dart-sdk-%{version}-%{dartarch}
 
-%define dartsource() Source%{1}: https://storage.googleapis.com/dart-archive/channels/stable/release/%{ver}/sdk/dartsdk-linux-%{2}-release.zip
+%define dartsource() Source%{1}: https://storage.googleapis.com/dart-archive/channels/dev/release/%{ver}/sdk/dartsdk-linux-%{2}-release.zip
 
 %dartsource 0 x64
 %dartsource 1 ia32
 %dartsource 2 arm64
 %dartsource 3 arm
 %dartsource 4 riscv64
-#Source0:        https://storage.googleapis.com/dart-archive/channels/stable/release/%{ver}/sdk/dartsdk-linux-%{dartarch}-release.zip
 
 BuildRequires: unzip
 BuildRequires: coreutils
