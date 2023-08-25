@@ -1,5 +1,3 @@
-Version: 3.2.0
-%define ver %{version}-94.0.dev
 
 Name: dart
 Release:        1%{?dist}
