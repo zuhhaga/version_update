@@ -28,7 +28,7 @@ ExclusiveArch: %ix86 %arm64 %arm %x86_64 x86_64
 
 %define dartpath %{_usr}/lib/dart-sdk-%{version}-%{dartarch}
 
-%define dartsource() Source%{1}: https://storage.googleapis.com/dart-archive/channels/dev/release/%{ver}/sdk/dartsdk-linux-%{2}-release.zip
+%define dartsource() Source%{1}: https://storage.googleapis.com/dart-archive/channels/stable/release/%{ver}/sdk/dartsdk-linux-%{2}-release.zip
 
 %dartsource 0 x64
 %dartsource 1 ia32
