@@ -5,8 +5,7 @@ Summary:        Dart SDK
 License:        BSD
 URL:            https://dart.dev/
 %define _build_id_links none
-ExclusiveArch: %ix86 %arm64 %arm %x86_64 x86_64 
-#riscv64 
+ExclusiveArch: %ix86 %arm64 %arm %x86_64 x86_64 %riscv64  riscv64
 %define alternatives (update-alternatives or alternatives)
 %ifarch %{x86_64} x86_64
 %define dartarch x64
@@ -20,20 +19,20 @@ ExclusiveArch: %ix86 %arm64 %arm %x86_64 x86_64
 %elifarch %{arm}
 %define dartarch arm
 %define dartnum 3
-#elifarch %{riscv64} riscv64 
-#define dartarch riscv64
-#define dartnum 4
+%elifarch %{riscv64} riscv64 
+%define dartarch riscv64
+%define dartnum 4
 %endif
 
 %define dartpath %{_usr}/lib/dart-sdk-%{version}-%{dartarch}
 
-%define dartsource() Source%{1}: https://storage.googleapis.com/dart-archive/channels/stable/release/%{ver}/sdk/dartsdk-linux-%{2}-release.zip
+%define dartsource() Source%{1}: https://storage.googleapis.com/dart-archive/channels/dev/release/%{ver}/sdk/dartsdk-linux-%{2}-release.zip
 
 %dartsource 0 x64
 %dartsource 1 ia32
 %dartsource 2 arm64
 %dartsource 3 arm
-#dartsource 4 riscv64
+%dartsource 4 riscv64
 
 BuildRequires: unzip
 BuildRequires: coreutils
