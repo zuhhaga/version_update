@@ -98,7 +98,7 @@ if ($packagename eq 'waydroid-image'){
 
 
 
-$resp = get('https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION');
+$resp = get('https://storage.googleapis.com/dart-archive/channels/dev/release/latest/VERSION');
 
 
 $json = decode_json($resp);
@@ -108,7 +108,7 @@ my @x = split(/-/, $json->{'version'});
 open($fh, '>', 'docs/dart.spec');
 
 print $fh 'Version: ' . $x[0] . "\n";
-print $fh '%define ver %{version}';
+print $fh '%define ver %{version}-' . $x[1];
 #-' . $x[1] . "\n";
 
 
