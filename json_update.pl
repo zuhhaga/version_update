@@ -108,8 +108,7 @@ my @x = split(/-/, $json->{'version'});
 open($fh, '>', 'docs/dart.spec');
 
 print $fh 'Version: ' . $x[0] . "\n";
-print $fh '%define ver %{version}-' . $x[1];
-#-' . $x[1] . "\n";
+print $fh '%define ver %{version}-' . $x[1] . "\n";
 
 
 addtext($fh, 'dart.spec');
