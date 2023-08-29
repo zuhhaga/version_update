@@ -11,3 +11,9 @@ git config --global user.name "zuhhaga"
 git add --all
 git commit -m update
 git push
+
+git clone https://github.com/zuhhaga/flutter_update --filter=blob:none --no-checkout flup
+cd flup
+gh workflow run CI
+cd ..
+
