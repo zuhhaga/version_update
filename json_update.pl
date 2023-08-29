@@ -98,7 +98,7 @@ if ($packagename eq 'waydroid-image'){
 
 
 
-$resp = get('https://storage.googleapis.com/dart-archive/channels/dev/release/latest/VERSION');
+$resp = get('https://storage.googleapis.com/dart-archive/channels/beta/release/latest/VERSION');
 
 
 $json = decode_json($resp);
