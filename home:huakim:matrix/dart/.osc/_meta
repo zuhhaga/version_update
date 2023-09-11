@@ -1,0 +1,11 @@
+<package name="dart" project="home:huakim:matrix">
+  <title>dart</title>
+  <description>The dart programming language SDK.</description>
+  <publish>
+    <enable repository="Fedora_38"/>
+  </publish>
+  <useforbuild>
+    <enable repository="Fedora_38"/>
+  </useforbuild>
+</package>
+
