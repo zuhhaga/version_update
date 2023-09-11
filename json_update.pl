@@ -54,6 +54,8 @@ for (@txt) {
     $json = $jsons{$_};
     if (not defined($json)){
         $resp = get($_);
+#        print($_ . "\n");
+#        print($resp . "\n");
         $json = decode_json($resp);
         $jsons{$_} = $json;
     }
