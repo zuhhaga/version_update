@@ -1,0 +1,8 @@
+[general]
+apiurl=https://api.opensuse.org
+
+[https://api.opensuse.org]
+user=huakim
+pass=TGcIzYTtuUVRGemkMGE51
+credentials_mgr_class=osc.credentials.PlaintextConfigFileCredentialsManager
+
