@@ -40,4 +40,5 @@ do
   cp -v "../../docs/$i.spec" "$i.spec"
   osc --config "$oscrc" addremove
   osc --config "$oscrc" ci -m update
+  cd ..
 done
