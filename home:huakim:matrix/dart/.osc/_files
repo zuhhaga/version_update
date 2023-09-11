@@ -1,0 +1,7 @@
+<directory name="dart" rev="54" vrev="50" srcmd5="533555f687e661db150e4054c736ea0e">
+  <serviceinfo code="running" />
+  <entry name="_service" md5="4e1c5cf8c618e83a3a4b87ada7e7c781" size="57" mtime="1691006356" />
+  <entry name="dart.spec" md5="71aaaeced6000be484b6e1f20e0b08bd" size="1918" mtime="1694415854" />
+  <entry name="waydroid-image-gapps.spec" md5="e92d38d11b5015c585b99737e32c39c2" size="3051" mtime="1694415855" />
+  <entry name="waydroid-image.spec" md5="45534e4fc62360f3fd9e58d1eda4697b" size="3061" mtime="1694415855" />
+</directory>

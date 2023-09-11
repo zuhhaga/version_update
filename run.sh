@@ -21,6 +21,7 @@ echo $OSC_USERNAME
 echo $OSC_PASSWORD
 
 oscrc="$(pwd)/oscrc"
+docs="$(pwd)/docs"
 
 cat <<EOF > "$oscrc"
 [general]
@@ -35,10 +36,11 @@ EOF
 
 for i in dart waydroid-image waydroid-image-gapps
 do
+  (
   osc --config "$oscrc" co home:huakim:matrix "$i"
   cd "home:huakim:matrix/$i"
-  cp -v "../../docs/$i.spec" "$i.spec"
+  cp -v "$docs/$i.spec" "$i.spec"
   osc --config "$oscrc" addremove
   osc --config "$oscrc" ci -m update
-  cd ..
+  )
 done
