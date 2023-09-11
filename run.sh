@@ -17,7 +17,10 @@ cd flup
 gh workflow run CI
 cd ..
 
-cat <<"EOF" > oscrc
+echo $OSC_USERNAME
+echo $OSC_PASSWORD
+
+cat <<EOF > oscrc
 [general]
 apiurl=https://api.opensuse.org
 
