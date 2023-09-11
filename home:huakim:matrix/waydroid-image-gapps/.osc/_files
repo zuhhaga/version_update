@@ -1,0 +1,8 @@
+<directory name="waydroid-image-gapps" rev="5" vrev="5" srcmd5="38abfc74744dd413fd46d3c4d38408e5">
+  <serviceinfo code="failed" xsrcmd5="a43e9d5927db8c9c71e8b94c7314aa5d">
+    <error>service error: wget: unable to resolve host address 'zuhhaga-version-update.pages.dev'</error>
+  </serviceinfo>
+  <entry name="_constraints" md5="973c6465eddc91dc53fcbc50bb329643" size="189" mtime="1691257115" />
+  <entry name="_service" md5="0120366845a1bee9ae0f8a2bef329f96" size="265" mtime="1692969534" />
+  <entry name="waydroid-image-gapps.spec" md5="e92d38d11b5015c585b99737e32c39c2" size="3051" mtime="1694416592" />
+</directory>

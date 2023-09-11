@@ -1,3 +1,5 @@
 <project name="home:huakim:matrix">
   <package name="dart" state=" " />
+  <package name="waydroid-image" state=" " />
+  <package name="waydroid-image-gapps" state=" " />
 </project>

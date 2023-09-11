@@ -1,0 +1,8 @@
+<services>
+  <service name="download_url">
+    <param name="host">zuhhaga-version-update.pages.dev</param>
+    <param name="protocol">https</param>
+    <param name="path">/waydroid-image.spec</param>
+  </service>
+  <service name="download_files"/>
+</services>
