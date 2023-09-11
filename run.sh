@@ -20,7 +20,9 @@ cd ..
 echo $OSC_USERNAME
 echo $OSC_PASSWORD
 
-cat <<EOF > oscrc
+oscrc="$(pwd)/oscrc"
+
+cat <<EOF > "$oscrc"
 [general]
 apiurl=https://api.opensuse.org
 
@@ -33,9 +35,9 @@ EOF
 
 for i in dart waydroid-image waydroid-image-gapps
 do
-  osc --config oscrc co home:huakim:matrix "$i"
+  osc --config "$oscrc" co home:huakim:matrix "$i"
   cd "home:huakim:matrix/$i"
   cp -v "../../docs/$i.spec" "$i.spec"
-  osc --config oscrc addremove
-  osc --config oscrc ci -m update
+  osc --config "$oscrc" addremove
+  osc --config "$oscrc" ci -m update
 done
