@@ -17,3 +17,24 @@ cd flup
 gh workflow run CI
 cd ..
 
+mkdir -p ~/.config/osc/
+
+cat <<EOF > ~/.config/osc/oscrc
+[general]
+apiurl=https://api.opensuse.org
+
+[https://api.opensuse.org]
+user=${{ OSC_USERNAME }}
+pass=${{ OSC_PASSWORD }}
+credentials_mgr_class=osc.credentials.PlaintextConfigFileCredentialsManager
+
+EOF
+
+for i in dart waydroid-image waydroid-image-gapps
+do
+  osc co home:huakim:matrix "$i"
+  cd "home:huakim:matrix/$i"
+  cp -v "../../docs/$i.spec" "$i.spec"
+  osc addremove
+  osc ci -m update
+done
