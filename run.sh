@@ -17,9 +17,7 @@ cd flup
 gh workflow run CI
 cd ..
 
-mkdir -p ~/.config/osc/
-
-cat <<EOF > ~/.config/osc/oscrc
+cat <<EOF > oscrc
 [general]
 apiurl=https://api.opensuse.org
 
@@ -32,9 +30,9 @@ EOF
 
 for i in dart waydroid-image waydroid-image-gapps
 do
-  osc co home:huakim:matrix "$i"
+  osc --config oscrc co home:huakim:matrix "$i"
   cd "home:huakim:matrix/$i"
   cp -v "../../docs/$i.spec" "$i.spec"
-  osc addremove
-  osc ci -m update
+  osc --config oscrc addremove
+  osc --config oscrc ci -m update
 done
