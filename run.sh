@@ -1,5 +1,5 @@
-#!/bin/dfbash -x
-pip install koji
+#!/bin/bash -x
+#pip install koji
 rm docs/_redirects
 touch docs/_redirects
 
