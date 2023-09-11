@@ -17,13 +17,13 @@ cd flup
 gh workflow run CI
 cd ..
 
-cat <<EOF > oscrc
+cat <<"EOF" > oscrc
 [general]
 apiurl=https://api.opensuse.org
 
 [https://api.opensuse.org]
-user=${{ OSC_USERNAME }}
-pass=${{ OSC_PASSWORD }}
+user=$OSC_USERNAME
+pass=$OSC_PASSWORD
 credentials_mgr_class=osc.credentials.PlaintextConfigFileCredentialsManager
 
 EOF
