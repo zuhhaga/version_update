@@ -3,7 +3,7 @@
 rm docs/_redirects
 touch docs/_redirects
 
-python3 koji_update.py
+#python3 koji_update.py
 perl json_update.pl
 
 git config --global user.email "zuhhaga@gmail.com"
