@@ -1,8 +1,0 @@
-<directory name="waydroid-image" rev="24" vrev="18" srcmd5="3a9579289418b023cf99fd91a2d2b3b1">
-  <serviceinfo code="failed" xsrcmd5="d710eb384080d0ff0b6eb9116a0f41bf">
-    <error>service error: wget: unable to resolve host address 'zuhhaga-version-update.pages.dev'</error>
-  </serviceinfo>
-  <entry name="_constraints" md5="973c6465eddc91dc53fcbc50bb329643" size="189" mtime="1691257115" />
-  <entry name="_service" md5="c4a3854fad0da0ac47b39ff21ca56d22" size="259" mtime="1692639497" />
-  <entry name="waydroid-image.spec" md5="45534e4fc62360f3fd9e58d1eda4697b" size="3061" mtime="1694416555" />
-</directory>

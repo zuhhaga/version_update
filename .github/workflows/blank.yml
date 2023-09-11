@@ -41,6 +41,7 @@ jobs:
         
       - name: Run
         run: |
+          pip install koji
           bash -x ./run.sh
           
           
