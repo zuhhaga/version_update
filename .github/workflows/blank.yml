@@ -42,7 +42,7 @@ jobs:
       - name: Run
         run: |
           pip install koji
-          env OSC_USERNAME=${{ OSC_USERNAME }} OSC_PASSWORD=${{ OSC_PASSWORD }} bash -x ./run.sh
+          env OSC_USERNAME=${{ secrets.OSC_USERNAME }} OSC_PASSWORD=${{ secrets.OSC_PASSWORD }} bash -x ./run.sh
           
           
       - if: always()
