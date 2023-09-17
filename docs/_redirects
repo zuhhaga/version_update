@@ -1,0 +1,8 @@
+/fedora/f37/src/grub2.src.rpm https://kojipkgs.fedoraproject.org/packages/grub2/2.06/58.fc37/src/grub2-2.06-58.fc37.src.rpm
+/fedora/f37/src/dolphin.src.rpm https://kojipkgs.fedoraproject.org/packages/dolphin/22.08.2/1.fc37/src/dolphin-22.08.2-1.fc37.src.rpm
+/fedora/f38/src/grub2.src.rpm https://kojipkgs.fedoraproject.org/packages/grub2/2.06/89.fc38/src/grub2-2.06-89.fc38.src.rpm
+/fedora/f38/src/dolphin.src.rpm https://kojipkgs.fedoraproject.org/packages/dolphin/22.12.3/1.fc38/src/dolphin-22.12.3-1.fc38.src.rpm
+/fedora/f38/src/python-gbinder.src.rpm https://kojipkgs.fedoraproject.org/packages/python-gbinder/1.1.1/3.fc38/src/python-gbinder-1.1.1-3.fc38.src.rpm
+/fedora/f39/src/grub2.src.rpm https://kojipkgs.fedoraproject.org/packages/grub2/2.06/95.fc39/src/grub2-2.06-95.fc39.src.rpm
+/fedora/f39/src/dolphin.src.rpm https://kojipkgs.fedoraproject.org/packages/dolphin/23.04.3/2.fc39/src/dolphin-23.04.3-2.fc39.src.rpm
+/fedora/f39/src/python-gbinder.src.rpm https://kojipkgs.fedoraproject.org/packages/python-gbinder/1.1.1/6.fc39/src/python-gbinder-1.1.1-6.fc39.src.rpm
