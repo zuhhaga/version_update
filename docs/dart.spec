@@ -1,5 +1,7 @@
 Version: 3.2.0
 %define ver %{version}-134.1.beta
+Version: 3.2.0
+%define ver %{version}-134.1.beta
 
 Name: dart
 Release:        1%{?dist}
