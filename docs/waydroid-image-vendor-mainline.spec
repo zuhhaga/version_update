@@ -1,3 +1,9 @@
+Source0: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/lineage-18.1-20230916-MAINLINE-waydroid_x86_64-vendor.zip/download/#lineage-18.1-20230916-MAINLINE-waydroid_x86_64-vendor.zip
+Source1: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm/lineage-18.1-20230916-MAINLINE-waydroid_arm-vendor.zip/download/#lineage-18.1-20230916-MAINLINE-waydroid_arm-vendor.zip
+Source2: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_arm64/lineage-18.1-20230916-MAINLINE-waydroid_arm64-vendor.zip/download/#lineage-18.1-20230916-MAINLINE-waydroid_arm64-vendor.zip
+Source3: https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86/lineage-18.1-20230916-MAINLINE-waydroid_x86-vendor.zip/download/#lineage-18.1-20230916-MAINLINE-waydroid_x86-vendor.zip
+Version: 20230916
+%define type vendor
 Release:        0
 Summary:        Waydroid is a container-based approach to boot a full Android
 License:        LGPL-3.0-only

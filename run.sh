@@ -34,7 +34,7 @@ credentials_mgr_class=osc.credentials.PlaintextConfigFileCredentialsManager
 
 EOF
 
-for i in dart waydroid-image waydroid-image-gapps
+for i in dart waydroid-image-system-vanilla waydroid-image-system-gapps waydroid-image-vendor-mainline
 do
   (
   osc --config "$oscrc" co home:huakim:matrix "$i"

@@ -2,6 +2,7 @@ use JSON::PP;
 use LWP::Simple;
 use experimental "try";
 
+
 sub addtext{
     my $fh = shift;
     my $path = shift;
@@ -12,6 +13,9 @@ sub addtext{
     }
     close $input;
 }
+
+# update waydroid version
+my @jsons=();
 
 sub waysys{
     my $arch = shift;
@@ -25,80 +29,86 @@ sub wayven{
     return "https://ota.waydro.id/vendor/waydroid_$arch/$var.json";
 }
 
-my @txt = ();
+my $fh;
 my @archs = (qw( x86_64 arm arm64 x86 ));
 
-for (@archs){
-    push @txt, waysys($_, 'VANILLA');
-    push @txt, wayven($_, 'MAINLINE');
-}
+my @arrsys=qw(GAPPS VANILLA);
+my @arrven=qw(MAINLINE);
 
+my $hash_arr = {
+    'vendor' => \@arrven,
+    'system' => \@arrsys
+};
 
-my %jsons;
+my $hash_way = {
+    'vendor' => \&wayven,
+    'system' => \&waysys
+};
 
-my $packagename = 'waydroid-image';
-
-label1: 
-open(my $fh, '>', "docs/$packagename.spec");
-
-my $ts = 0;
-my @urls=();
-my @names=();
-my $resp;
-my $json;
-my $url;
-my $name;
-my $temp;
-
-for (@txt) {
-    $json = $jsons{$_};
-    if (not defined($json)){
-        $resp = get($_);
-#        print($_ . "\n");
-#        print($resp . "\n");
-        $json = decode_json($resp);
-        $jsons{$_} = $json;
+for my $con ("vendor", "system"){
+    my $arr = $$hash_arr{$con};
+    my $way = $$hash_way{$con};
+    for (@$arr){
+        my $temp = lc $_;
+        my $var = $_;
+        my $fh;
+        open($fh, '>', "docs/waydroid-image-$con-$temp.spec");
+        my $i = 0;
+        my $ver = 0;
+        while ($i < 4){
+            my $arch = $archs[$i];
+            my $jsonurl = &$way($arch, $var);
+            print($jsonurl);
+            my $resp = get($jsonurl);
+            print("\n");
+#            print($resp);
+            my $json = decode_json($resp);
+            push @jsons, $json;
+            
+            my $url = $json->{'response'}[0]{'url'};
+            my $name = $json->{'response'}[0]{'filename'};
+            my $temp = $json->{'response'}[0]{'datetime'} + 0;
+            
+            print $fh "Source$i: $url/#$name\n";
+            if ($temp > $ver) { $ver = $temp; };
+            $i = $i + 1;
+        }
+        
+        my $ver = POSIX::strftime("%Y%m%d", localtime($ver));
+        print $fh "Version: $ver\n%define type $con\n";
+        addtext($fh, "waydroid-image.spec");
+        close $fh;
     }
-    $url = $json->{'response'}[0]{'url'};
-    push @urls, $url;
-    $name = $json->{'response'}[0]{'filename'};
-    push @names, $name;
-    $temp = $json->{'response'}[0]{'datetime'} + 0;
-    if ($temp > $ts){
-        $ts = $temp;
-    }
-}
-
-my $version = POSIX::strftime("%Y%m%d", localtime($ts));
-print $fh "Name: $packagename
-Version: $version
-";
-
-
-my $id = 0;
-while ($id < 8){
-    my $n = $names[$id];
-    my $t = $urls[$id];
-    print $fh "Source$id: $t#/$n\n";
-    $id++;
-}
-
-addtext($fh, 'waydroid-image.spec');
-
-close $fh;
-
-if ($packagename eq 'waydroid-image'){
-    $packagename = 'waydroid-image-gapps';
-    $id = 0;
-    for (@archs){
-        $txt[$id] = waysys($_, 'GAPPS');
-        $id = $id + 2;
-    }
-    goto label1;
 }
 
 
+#for (@arrsys){
+#    my $temp = lc $_;
+#    open($fh, '>', "docs/waydroid-image-system-${temp}.spec");
+    
+#        my $resp = get($_);
+#        my $json = decode_json($resp);
+#        push @jsons, $json;
+#}
+#for (@archs){
+#    push @txt, waysys($_, 'GAPPS');
+#    push @txt, waysys($_, 'VANILLA');
+#    push @txt, wayven($_, 'MAINLINE');
+#}
 
+#$url = $json->{'response'}[0]{'url'};
+#push @urls, $url;
+#$name = $json->{'response'}[0]{'filename'};
+#push @names, $name;
+#$temp = $json->{'response'}[0]{'datetime'} + 0;
+
+#my $packagename = 'waydroid-image';
+
+#label1: 
+#open(my $fh, '>', "docs/$packagename.spec");
+
+
+# update dart sdk version
 
 $resp = get('https://storage.googleapis.com/dart-archive/channels/beta/release/latest/VERSION');
 

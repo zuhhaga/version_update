@@ -1,3 +1,9 @@
+Source0: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-18.1-20230916-GAPPS-waydroid_x86_64-system.zip/download/#lineage-18.1-20230916-GAPPS-waydroid_x86_64-system.zip
+Source1: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm/lineage-18.1-20230916-GAPPS-waydroid_arm-system.zip/download/#lineage-18.1-20230916-GAPPS-waydroid_arm-system.zip
+Source2: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_arm64/lineage-18.1-20230916-GAPPS-waydroid_arm64-system.zip/download/#lineage-18.1-20230916-GAPPS-waydroid_arm64-system.zip
+Source3: https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86/lineage-18.1-20230916-GAPPS-waydroid_x86-system.zip/download/#lineage-18.1-20230916-GAPPS-waydroid_x86-system.zip
+Version: 20230916
+%define type system
 Release:        0
 Summary:        Waydroid is a container-based approach to boot a full Android
 License:        LGPL-3.0-only
