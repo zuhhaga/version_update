@@ -69,7 +69,7 @@ for my $con ("vendor", "system"){
             my $name = $json->{'response'}[0]{'filename'};
             my $temp = $json->{'response'}[0]{'datetime'} + 0;
             
-            print $fh "Source$i: $url/#$name\n";
+            print $fh "Source$i: $url#/$name\n";
             if ($temp > $ver) { $ver = $temp; };
             $i = $i + 1;
         }
